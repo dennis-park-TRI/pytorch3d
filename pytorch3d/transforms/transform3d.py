@@ -507,7 +507,7 @@ class Rotate(Transform3d):
             msg = "R must have shape (3, 3) or (N, 3, 3); got %s"
             raise ValueError(msg % repr(R.shape))
         R = R.to(dtype=dtype).to(device=device)
-        _check_valid_rotation_matrix(R, tol=orthogonal_tol)
+        # _check_valid_rotation_matrix(R, tol=orthogonal_tol)
         N = R.shape[0]
         mat = torch.eye(4, dtype=dtype, device=device)
         mat = mat.view(1, 4, 4).repeat(N, 1, 1)
